@@ -10,7 +10,7 @@ var routes = require('./routes');
 var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
 var db = require('./lib/database');
 var blog = require('./lib/blog/app');
-var secrets = require('./lib/secrets');
+var config = require('./lib/config');
 
 var app = express();
 
@@ -22,8 +22,8 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.cookieParser(secrets.secrets.cookieParser));
-app.use(express.session({secret: secrets.secrets.session}));
+app.use(express.cookieParser(config.cookieParser));
+app.use(express.session({secret: config.session}));
 app.use(express.methodOverride());
 // Passport middleware
 app.use(passport.initialize());
@@ -40,7 +40,7 @@ if ('development' == app.get('env')) {
 app.enable('trust proxy');
 
 // Initialize the database.
-db.start('localhost', 27017, 'exploring-lines-blog', function() {
+db.start(config.dbServer, config.dbPort, config.dbName, function() {
     // Initialize each module.
     blog.init(app);
 
