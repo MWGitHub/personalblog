@@ -25,12 +25,14 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.cookieParser(config.cookieParser));
-app.use(express.session({secret: config.session}));
+app.use(express.cookieParser(config.secret));
+app.use(express.cookieSession({cookie: {maxAge: 60 * 60 * 1000}}));
 app.use(express.methodOverride());
+//app.use(express.session({secret: config.session}));
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
