@@ -6,13 +6,16 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var routes = require('./routes');
 var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
 var db = require('./lib/database');
-var blog = require('./lib/blog/app');
 var config = require('./lib/config');
+var blog = require('./lib/blog/app');
+var auth = require('./lib/auth/app');
 
 var app = express();
+
+// Passport setup.
+auth.passportSetup(passport);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -43,6 +46,7 @@ app.enable('trust proxy');
 db.start(config.dbServer, config.dbPort, config.dbName, function() {
     // Initialize each module.
     blog.init(app);
+    auth.init(app, passport);
 
     // Start the server.
     http.createServer(app).listen(app.get('port'), function(){

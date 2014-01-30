@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  form(method="post")
+    div
+      div
+        span Username :
+        input(type="text", name="username", id="username")
+      div
+        span Password :
+        input(type="password", name="password", id="password")
+      div#registerSubmit
+        input(type="submit", value="Send")
