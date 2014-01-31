@@ -26,6 +26,12 @@ h2 {
   font-size: 24px;
   margin-bottom: 16px;
 }
+h3 {
+  font-size: 20px;
+}
+h4 {
+  font-size: 16px;
+}
 h3,
 h4,
 h5,
@@ -34,6 +40,18 @@ h6 {
 }
 p {
   margin-bottom: 20px;
+}
+a:link {
+  color: #0db9ff;
+}
+a:visited {
+  color: #984fb0;
+}
+a:hover {
+  color: #5a9cc7;
+}
+a:active {
+  color: #42708f;
 }
 #site-title {
   margin-bottom: 5px;

@@ -7,8 +7,23 @@ html
       title Exploring Lines
     link(rel='stylesheet', href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(type='text/javascript', src='http://code.jquery.com/jquery-2.1.0.min.js')
+    script.
+      window.jQuery || document.write('<script type="text/javascript" src="/javascripts/jquery-2.1.0.min.js"><\/script>')
   body
     div#menu
       include menu
     div#content
       block content
+    div#footer
+      script.
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-42494563-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();

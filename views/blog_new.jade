@@ -21,5 +21,10 @@ block content
         textarea(name="body", rows=20, id="editArticleBody")
           if article
             !=article.body
+      div
+        span Excerpt :
+        textarea(name="excerpt", rows=20, id="editArticleExcerpt")
+          if article
+            !=article.excerpt
       div#editArticleSubmit
         input(type="submit", value="Send")
