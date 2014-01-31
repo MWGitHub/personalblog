@@ -5,13 +5,21 @@ block content
   form(method="post")
     div
       div
-        spam Slug :
-        input(type="text", name="slug", id="editSlug")
+        span Slug :
+        if article
+          input(type="text", name="articleSlug", id="editSlug", value=article.slug)
+        else
+          input(type="text", name="articleSlug", id="editSlug")
       div
         span Title :
-        input(type="text", name="title", id="editArticleTitle")
+        if article
+          input(type="text", name="title", id="editArticleTitle", value=article.title)
+        else
+          input(type="text", name="title", id="editArticleTitle")
       div
         span Body :
         textarea(name="body", rows=20, id="editArticleBody")
+          if article
+            !=article.body
       div#editArticleSubmit
         input(type="submit", value="Send")

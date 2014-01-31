@@ -53,8 +53,6 @@ db.start(config.dbServer, config.dbPort, config.dbName, function() {
     auth.init(app, passport);
     admin.init(app);
 
-    app.get('/', index.index);
-
     // Start the server.
     http.createServer(app).listen(app.get('port'), function(){
         console.log('Express server listening on port ' + app.get('port'));
