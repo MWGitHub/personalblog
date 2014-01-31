@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  h1= title
+  h1 News
   #articles
     - each article in articles
       div.article
         div.created_at= article.created_at
         div.title
           a(href="/blog/"+article.slug)= article.title
-        div.body= article.body
+        div.body!= article.body

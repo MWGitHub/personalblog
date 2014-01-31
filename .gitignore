@@ -3,3 +3,4 @@ node_modules/
 *.iml
 dbdata/
 config.js
+public/

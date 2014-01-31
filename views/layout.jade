@@ -1,9 +1,14 @@
 doctype html
 html
   head
-    title= title
+    if title
+      title= title + ' | Exploring Lines'
+    else
+      title Exploring Lines
     link(rel='stylesheet', href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    include menu
-    block content
+    div#menu
+      include menu
+    div#content
+      block content

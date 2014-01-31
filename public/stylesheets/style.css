@@ -1,52 +1,80 @@
 body {
-  font: 14px "Helvetica Neue", "Lucida Grande", Helvetica, Arial, sans-serif;
-  text-align: center;
+  font: 18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+  text-align: left;
   text-stroke: 1px rgba(255,255,255,0.1);
-  color: #555;
+  color: #444;
+  background-color: #fafafa;
+  line-height: 1.5em;
 }
 h1,
-h2 {
-  margin: 0;
-  font-size: 22px;
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 20px 0;
   color: #343434;
+  font-weight: bold;
 }
 h1 {
   text-shadow: 1px 2px 2px #ddd;
-  font-size: 60px;
+  font-size: 40px;
+  margin-bottom: 20px;
 }
-#articles {
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
-  width: 320px;
+h2 {
+  text-shadow: 1px 2px 2px #ddd;
+  font-size: 24px;
+  margin-bottom: 16px;
 }
-#articles .article {
-  margin: 20px;
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 6px;
 }
-#articles .article .created_at {
-  display: none;
+p {
+  margin-bottom: 20px;
 }
-#articles .article .title {
-  font-weight: bold;
+#site-title {
+  margin-bottom: 5px;
+}
+#site-title a:link,
+#site-title a:visited,
+#site-title a:hover,
+#site-title a:active {
+  text-decoration: none;
+  color: #444;
+}
+#site-title a:hover {
+  color: #888;
+}
+#menu {
+  float: left;
+  margin: 12px;
+  padding: 12px;
+  width: 200px;
+  line-height: 1.7em;
+  background-color: #bce391;
+  font-size: 20px;
+}
+#menu a:link,
+#menu a:visited,
+#menu a:hover,
+#menu a:active {
+  text-decoration: none;
+  color: #444;
+}
+#menu a:hover,
+#menu a:active {
   text-decoration: underline;
-  background-color: #eee;
 }
-#articles .article .body {
-  background-color: #ffa;
+#menu ul ul {
+  margin-left: 10px;
+  font-size: 16px;
+  line-height: 1.5em;
 }
-.article .created_at {
-  display: none;
-}
-.article input[type = text] {
-  width: 490px;
-  margin-left: 16px;
-}
-.article input[type = button],
-.article input[type =submit] {
-  text-align: left;
-  margin-left: 440px;
-}
-.article textarea {
-  width: 490px;
-  height: 90px;
+#content {
+  padding: 12px;
+  overflow: hidden;
+  width: auto;
 }
