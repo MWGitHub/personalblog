@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p
+    a(href="/blog/new") Create a new post.
+  h2 Edit Posts
+  #articles
+    - each article in articles
+      div.article
+        div.title
+          a(href="/blog/edit/"+article.slug) (edit)
+          span -
+          a(href="/blog/"+article.slug)= article.title
