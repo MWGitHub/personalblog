@@ -8,7 +8,9 @@ block content
   #articles
     - each article in articles
       div.article
-        div.title
           a(href="/blog/edit/"+article.slug) (edit)
           span -
-          a(href="/blog/"+article.slug)= article.title
+          a(href="/blog/post/"+article.slug)= article.title
+          form(method="post", action="/blog/delete/"+article._id)
+              input(type="checkbox", name="deleteConfirm")
+              input(type="submit", value="delete")

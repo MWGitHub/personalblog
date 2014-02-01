@@ -3,5 +3,7 @@ node_modules/
 *.iml
 dbdata/
 config.js
-public/
+public/wp-content
+public/images
+public/javascripts
 starter.sh
