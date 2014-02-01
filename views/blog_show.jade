@@ -11,6 +11,7 @@ block content
     div
       form(method="post", action="/blog/addComment")
         input(type="hidden", name="_id", value=article._id.toHexString())
+        input(type="hidden", name="slug", value=article.slug)
         div
           span Author :
           input(type="text", name="person", id="addCommentPerson")
