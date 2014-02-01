@@ -26,5 +26,11 @@ block content
         textarea(name="excerpt", rows=20, id="editArticleExcerpt")
           if article
             !=article.excerpt
+      div
+        span Publish :
+        if article
+          input(type="checkbox", name="published", checked=article.isPublished)
+        else
+          input(type="checkbox", name="published")
       div#editArticleSubmit
         input(type="submit", value="Send")

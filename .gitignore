@@ -4,3 +4,4 @@ node_modules/
 dbdata/
 config.js
 public/
+starter.sh
