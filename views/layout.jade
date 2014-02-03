@@ -11,10 +11,14 @@ html
     script(type='text/javascript', src='http://code.jquery.com/jquery-2.1.0.min.js')
     script.
       window.jQuery || document.write('<script type="text/javascript" src="/javascripts/jquery-2.1.0.min.js"><\/script>')
+    script(type='text/javascript', src='/javascripts/strftime.js')
+    block head
   body
     div#menu
       include menu
+      block menu
     div#content
       block content
     div#footer
+      block footer
       include footer

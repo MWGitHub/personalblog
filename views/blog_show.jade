@@ -1,22 +1,33 @@
 extends layout
 
 block content
-  h1= title
-  div.article
-    div.body!= article.body
-    - each comment in article.comments
-      div.comment
-        div.person= comment.person
-        div.comment= comment.comment
-    div
-      form(method="post", action="/blog/addComment")
-        input(type="hidden", name="_id", value=article._id.toHexString())
-        input(type="hidden", name="slug", value=article.slug)
-        div
-          span Author :
-          input(type="text", name="person", id="addCommentPerson")
-        div
-          span Comment :
-          textarea(name="comment", rows=5, id="addCommentComment")
-        div#editArticleSubmit
-          input(type="submit", value="Send")
+  #blog
+    h1= title
+    div.article
+      div.body!= article.body
+      h3 Comments
+      - each comment in article.comments
+        div.comment
+          div.person
+            span= comment.person + " - " + comment.created_at.toDateString()
+          div.comment-body= comment.comment
+          if isAdmin
+            form(method="post", action="/blog/delete-comment")
+              input(type="hidden", name="_id", value=article._id.toHexString())
+              input(type="hidden", name="slug", value=article.slug)
+              input(type="hidden", name="person", value=comment.person)
+              input(type="hidden", name="created_at", value=comment.created_at.toISOString())
+              input(type="checkbox", name="confirm")
+              input(type="submit", value="Delete")
+      div
+        form(method="post", action="/blog/addComment")
+          input(type="hidden", name="_id", value=article._id.toHexString())
+          input(type="hidden", name="slug", value=article.slug)
+          div
+            span Author :
+            input(type="text", name="person", id="addCommentPerson")
+          div
+            span Comment :
+            textarea(name="comment", rows=5, id="addCommentComment")
+          div#editArticleSubmit
+            input(type="submit", value="Send")

@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  h1 News
-  #articles
-    - each article in articles
-      div.article
-        div.title
-          h3
-            a(href="/blog/post/"+article.slug)= article.title
-        div.body!= article.excerpt
+  #blog
+    h1 News
+    #articles
+      - each article in articles
+        div.article
+          div.title
+            h3
+              a(href="/blog/post/"+article.slug)= article.title
+          div.body!= article.excerpt

@@ -96,3 +96,20 @@ a:active {
   overflow: hidden;
   width: auto;
 }
+#blog {
+  max-width: 800px;
+}
+#blog img {
+  width: 100%;
+  height: auto;
+}
+.comment {
+  margin-bottom: 10px;
+}
+@media (max-width: 700px) {
+  #menu {
+    width: 100%;
+    padding: 2.5%;
+    margin: 0;
+  }
+}
