@@ -23,7 +23,7 @@ h1 {
 }
 h2 {
   text-shadow: 1px 2px 2px #ddd;
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 16px;
 }
 h3 {
@@ -53,7 +53,9 @@ a:hover {
 a:active {
   color: #42708f;
 }
+/** Menu **/
 #site-title {
+  padding: 5px;
   margin-bottom: 5px;
 }
 #site-title a:link,
@@ -66,14 +68,25 @@ a:active {
 #site-title a:hover {
   color: #888;
 }
+.pure-menu.pure-menu-open {
+  border: 0;
+  background: inherit;
+}
+.pure-menu .pure-menu-heading {
+  border-bottom-color: #a9cb83;
+  padding: 5px;
+}
+.pure-menu li a:hover,
+.pure-menu li a:focus {
+  background: #aed990;
+}
 #menu {
   float: left;
-  margin: 12px;
-  padding: 12px;
-  width: 200px;
+  margin-right: 12px;
+  width: 250px;
   line-height: 1.7em;
-  background-color: #bce391;
-  font-size: 20px;
+  background-color: #b4ea8b;
+  font-size: 18px;
 }
 #menu a:link,
 #menu a:visited,
@@ -91,6 +104,7 @@ a:active {
   font-size: 16px;
   line-height: 1.5em;
 }
+/** Layout **/
 #content {
   padding: 12px;
   overflow: hidden;
@@ -106,10 +120,35 @@ a:active {
 .comment {
   margin-bottom: 10px;
 }
+/** Forms **/
+.medium-input {
+  width: 20em;
+}
+.long-input {
+  width: 30em;
+}
+.pure-button-primary {
+  background-color: #b4ea8b;
+  color: #666;
+}
+.pure-form-aligned .pure-control-group label {
+  width: 6em;
+}
+.pure-form-aligned .pure-controls {
+  margin-left: 6em;
+}
+.small-button {
+  padding: 2px;
+}
+/** Others **/
+.destructive {
+  background-color: #ed6767;
+  color: #eee;
+}
+/** Smaller Screens **/
 @media (max-width: 700px) {
   #menu {
     width: 100%;
-    padding: 2.5%;
     margin: 0;
   }
 }

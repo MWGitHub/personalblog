@@ -16,7 +16,7 @@ h1
   margin-bottom 20px
 h2
   text-shadow 1px 2px 2px #ddd
-  font-size 24px
+  font-size 22px
   margin-bottom 16px
 h3
   font-size 20px
@@ -34,21 +34,31 @@ a:hover
   color #5A9CC7
 a:active
   color #42708F
+
+/** Menu **/
 #site-title
   a:link, a:visited, a:hover, a:active
     text-decoration none
     color #444
   a:hover
     color #888
+  padding 5px
   margin-bottom 5px
+.pure-menu.pure-menu-open
+  border 0
+  background inherit
+.pure-menu .pure-menu-heading
+  border-bottom-color #A9CB83
+  padding 5px
+.pure-menu li a:hover, .pure-menu li a:focus
+  background #AED990
 #menu
   float left
-  margin 12px
-  padding 12px
-  width 200px
+  margin-right 12px
+  width 250px
   line-height 1.7em
-  background-color #BCE391
-  font-size 20px
+  background-color #B4EA8B
+  font-size 18px
   a:link, a:visited, a:hover, a:active
     text-decoration none
     color #444
@@ -58,6 +68,8 @@ a:active
     margin-left 10px
     font-size 16px
     line-height 1.5em
+
+/** Layout **/
 #content
   padding 12px
   overflow hidden
@@ -70,8 +82,28 @@ a:active
 .comment
   margin-bottom 10px
 
+/** Forms **/
+.medium-input
+  width 20em
+.long-input
+  width 30em
+.pure-button-primary
+  background-color #B4EA8B
+  color #666
+.pure-form-aligned .pure-control-group label
+  width 6em
+.pure-form-aligned .pure-controls
+  margin-left 6em
+.small-button
+  padding 2px
+
+/** Others **/
+.destructive
+  background-color #ED6767
+  color #EEE
+
+/** Smaller Screens **/
 @media (max-width: 700px)
   #menu
     width 100%
-    padding 2.5%
     margin 0

@@ -5,38 +5,38 @@ block head
   script(type='text/javascript', src='/javascripts/ckeditor/adapters/jquery.js')
 block content
   h1= title
-  form(method="post")
-    div
-      div
-        span Slug :
+  form.pure-form.pure-form-stacked(method="post")
+    fieldset
+      div.pure-control-group
+        label(for="articleSlug") Slug
         if article
-          input(type="text", name="articleSlug", id="editSlug", value=article.slug)
+          input.long-input(type="text", name="articleSlug", id="editSlug", value=article.slug)
         else
-          input(type="text", name="articleSlug", id="editSlug")
-      div
-        span Title :
+          input.long-input(type="text", name="articleSlug", id="editSlug")
+      div.pure-control-group.long-input
+        label(for="title") Title
         if article
-          input(type="text", name="title", id="editArticleTitle", value=article.title)
+          input.long-input(type="text", name="title", id="editArticleTitle", value=article.title)
         else
-          input(type="text", name="title", id="editArticleTitle")
-      div
-        span Body :
+          input.long-input(type="text", name="title", id="editArticleTitle")
+      div.pure-control-group
+        label(for="body") Body
         textarea(name="body", rows=20, id="editArticleBody")
           if article
             !=article.body
-      div
-        span Excerpt :
+      div.pure-control-group
+        label(for="excerpt") Excerpt
         textarea(name="excerpt", rows=20, id="editArticleExcerpt")
           if article
             !=article.excerpt
-      div
-        span Publish :
-        if article
-          input(type="checkbox", name="published", checked=article.isPublished)
-        else
-          input(type="checkbox", name="published")
-      div#editArticleSubmit
-        input(type="submit", value="Send")
+      div.pure-controls
+        label.pure-checkbox(for="published")
+          if article
+            input(type="checkbox", name="published", id="published", checked=article.isPublished)
+          else
+            input(type="checkbox", name="published")
+          = " Published"
+        button.pure-button.pure-button-primary(type="submit") Submit
   script.
     $(document).ready(function() {
       $('textarea#editArticleBody').ckeditor().on('instanceReady.ckeditor', function(event, editor) {

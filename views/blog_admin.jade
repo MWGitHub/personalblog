@@ -11,6 +11,9 @@ block content
           a(href="/blog/edit/"+article.slug) (edit)
           span -
           a(href="/blog/post/"+article.slug)= article.title
-          form(method="post", action="/blog/delete/"+article._id)
-              input(type="checkbox", name="deleteConfirm")
-              input(type="submit", value="delete")
+          form.pure-form(method="post", action="/blog/delete/"+article._id)
+            fieldset
+              label(for="deleteConfirm")
+                input(type="checkbox", name="deleteConfirm")
+                = " confirm "
+              button.pure-button.pure-button-primary.small-button.destructive(type="submit") Delete
