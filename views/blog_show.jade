@@ -5,7 +5,8 @@ block content
     h1= title
     div.article
       div.body!= article.body
-      h3 Comments
+      if (article.comments.length > 0)
+        h3 Comments
       - each comment in article.comments
         div.comment
           div.person
