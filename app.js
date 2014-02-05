@@ -12,6 +12,7 @@ var config = require('./lib/config');
 var blog = require('./lib/blog/app');
 var auth = require('./lib/auth/app');
 var admin = require('./lib/admin/app');
+var menu = require('./lib/menu/app');
 var index = require('./lib/index');
 
 var app = express();
@@ -52,6 +53,7 @@ db.start(config.dbServer, config.dbPort, config.dbName, function() {
     blog.init(app);
     auth.init(app, passport);
     admin.init(app);
+    menu.init(app);
 
     // Start the server.
     http.createServer(app).listen(app.get('port'), function(){
