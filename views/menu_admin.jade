@@ -2,3 +2,29 @@ extends layout
 
 block content
   h1= title
+  - each item in items
+    form.pure-form.inline-form(method='post')
+      fieldset
+        input(type='hidden', name='id', value=item._id.toHexString())
+        input(type='text', name='label', placeholder='label', value=item.label)
+        input(type='text', name='link', placeholder='link', value=item.link)
+        input(type='text', name='order', placeholder='order', value=item.order)
+        label(for='isAdmin') Admin Only
+        input(type='checkbox', name='isAdmin', id='isAdmin', checked=item.isAdmin)
+        button.pure-button.pure-button-primary.small-button(type='submit') Save
+    form.pure-form.inline-form(method='post')
+      fieldset
+        input(type='hidden', name='id', value=item._id.toHexString())
+        input(type='hidden', name='delete', value='delete')
+        button.pure-button.pure-button-primary.small-button.destructive(type='submit') Delete
+    br
+  // New item
+  form.pure-form(method='post')
+    fieldset
+      legend Add new item
+      input(type='text', name='label', placeholder='label')
+      input(type='text', name='link', placeholder='link')
+      input(type='text', name='order', placeholder='order')
+      label(for='isAdmin') Admin Only
+      input(type='checkbox', name='isAdmin', id='isAdmin')
+      button.pure-button.pure-button-primary.small-button(type='submit') Save

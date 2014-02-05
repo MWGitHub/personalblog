@@ -6,7 +6,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport');
 var db = require('./lib/database');
 var config = require('./lib/config');
 var blog = require('./lib/blog/app');
@@ -35,6 +35,7 @@ app.use(express.methodOverride());
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(auth.userInfo);
 
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));

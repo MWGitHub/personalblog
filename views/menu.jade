@@ -1,15 +1,18 @@
+mixin showItem(item)
+  if item.link
+    li
+      a(href=item.link)= item.label
+  else
+    li.pure-menu-heading= item.label
+
 h2#site-title
   a(href='/') Exploring Lines
-
 div.pure-menu.pure-menu-open
-  ul
-    li.pure-menu-heading Navigation
-    li
-      a(href='/') Blog
-    li.pure-menu-heading Projects
-    li
-      a(href='/blog/post/about-website') This Website
-    li
-      a(href='https://github.com/MWGitHub/galehx') Gale Framework
-    li
-      a(href='https://github.com/MWGitHub/EntitySystem') Java Entity System
+  if menuItems
+    - each item in menuItems
+      ul
+        if item.isAdmin
+          if user
+            +showItem(item)
+        else
+          +showItem(item)

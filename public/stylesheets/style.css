@@ -30,7 +30,13 @@ h3 {
   font-size: 20px;
 }
 h4 {
+  font-size: 18px;
+}
+h5 {
   font-size: 16px;
+}
+h6 {
+  font-size: 14px;
 }
 h3,
 h4,
@@ -52,6 +58,12 @@ a:hover {
 }
 a:active {
   color: #42708f;
+}
+input {
+  margin: 0.2em;
+}
+textarea {
+  margin: 0.2em;
 }
 /** Menu **/
 #site-title {
@@ -121,6 +133,14 @@ a:active {
   margin-bottom: 10px;
 }
 /** Forms **/
+.inline-form {
+  display: inline;
+  margin-right: 0.5em;
+}
+.inline-form fieldset {
+  display: inline;
+  margin-right: 0.5em;
+}
 .medium-input {
   width: 20em;
 }
@@ -135,10 +155,10 @@ a:active {
   width: 6em;
 }
 .pure-form-aligned .pure-controls {
-  margin-left: 6em;
+  margin-left: 6.4em;
 }
 .small-button {
-  padding: 2px;
+  padding: 0.1em;
 }
 /** Others **/
 .destructive {
