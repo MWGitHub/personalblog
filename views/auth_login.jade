@@ -2,7 +2,10 @@ extends layout
 
 block content
   h1= title
-  form.pure-form.pure-form-aligned(method="post")
+  - var action = null;
+  if path
+    - action = '?path=' + path;
+  form.pure-form.pure-form-aligned(method="post", action=action)
     fieldset
       div.pure-control-group
         label(for="username") Username
