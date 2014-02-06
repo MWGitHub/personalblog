@@ -3,6 +3,9 @@ extends layout
 block content
   #blog
     h1= title
+    if user
+      p
+        a(href='/blog/edit/' + article.slug) (edit)
     div.article
       div.body!= article.body
       if article.showComments

@@ -15,11 +15,19 @@ var admin = require('./lib/admin/app');
 var menu = require('./lib/menu/app');
 var index = require('./lib/index');
 
-var app = express();
+/**
+ * Starts the server.
+ */
+function startServer() {
+    http.createServer(app).listen(app.get('port'), function(){
+        console.log('Express server listening on port ' + app.get('port'));
+    });
+}
 
+// Setup the node application.
+var app = express();
 // Passport setup.
 auth.passportSetup(passport);
-
 // all environments
 app.set('port', process.env.PORT || 4000);
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +39,6 @@ app.use(express.urlencoded());
 app.use(express.cookieParser(config.secret));
 app.use(express.cookieSession({cookie: {maxAge: 60 * 60 * 1000}}));
 app.use(express.methodOverride());
-//app.use(express.session({secret: config.session}));
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -56,9 +63,26 @@ db.start(config.dbServer, config.dbPort, config.dbName, function() {
     admin.init(app);
     menu.init(app);
 
-    // Start the server.
-    http.createServer(app).listen(app.get('port'), function(){
-        console.log('Express server listening on port ' + app.get('port'));
-    });
+    // Check for commands.
+    switch (process.argv[2]) {
+        case '--createuser':
+            var name = process.argv[3];
+            var password = process.argv[4];
+            if (!name) console.error('Username not provided.');
+            if (!password) console.error('Password not provided.');
+            if (!name || !password) process.exit(1);
+            var Auth = require('./lib/auth/auth').Auth;
+            Auth.save({username: name, password: password}, function(error, user) {
+                if (error) {
+                    console.error('Could not create user.');
+                    process.exit(1);
+                }
+                console.log('User ' + name + ' created.');
+                process.exit(0);
+            });
+            break;
+        default:
+            startServer();
+    }
 });
 
