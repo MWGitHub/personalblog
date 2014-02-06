@@ -36,6 +36,18 @@ block content
           else
             input(type="checkbox", name="published")
           = " Published"
+        label.pure-checkbox(for="allowComments")
+          if article
+            input(type="checkbox", name="allowComments", id="allowComments", checked=article.allowComments)
+          else
+            input(type="checkbox", name="allowComments")
+          = " Allow Comments"
+        label.pure-checkbox(for="showComments")
+          if article
+            input(type="checkbox", name="showComments", id="showComments", checked=article.showComments)
+          else
+            input(type="checkbox", name="showComments")
+          = " Show Comments"
         button.pure-button.pure-button-primary(type="submit") Submit
   script.
     $(document).ready(function() {

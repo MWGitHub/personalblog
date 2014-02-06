@@ -5,35 +5,37 @@ block content
     h1= title
     div.article
       div.body!= article.body
-      if (article.comments.length > 0)
-        h3 Comments
-      - each comment in article.comments
-        div.comment
-          div.person
-            span= comment.person + " - " + comment.created_at.toDateString()
-          div.comment-body= comment.comment
-          if isAdmin
-            form.pure-form(method="post", action="/blog/delete-comment")
-              fieldset
-                input(type="hidden", name="_id", value=article._id.toHexString())
-                input(type="hidden", name="slug", value=article.slug)
-                input(type="hidden", name="person", value=comment.person)
-                input(type="hidden", name="created_at", value=comment.created_at.toISOString())
-                label(for="confirm")
-                  input(type="checkbox", name="confirm")
-                  = " confirm "
-                button.pure-button.pure-button-primary.small-button.destructive(type="submit") Delete
+      if article.showComments
+        if article.comments.length > 0
+          h3 Comments
+        - each comment in article.comments
+          div.comment
+            div.person
+              span= comment.person + " - " + comment.created_at.toDateString()
+            div.comment-body= comment.comment
+            if isAdmin
+              form.pure-form(method="post", action="/blog/delete-comment")
+                fieldset
+                  input(type="hidden", name="_id", value=article._id.toHexString())
+                  input(type="hidden", name="slug", value=article.slug)
+                  input(type="hidden", name="person", value=comment.person)
+                  input(type="hidden", name="created_at", value=comment.created_at.toISOString())
+                  label(for="confirm")
+                    input(type="checkbox", name="confirm")
+                    = " confirm "
+                  button.pure-button.pure-button-primary.small-button.destructive(type="submit") Delete
       div
-        h3 Comment on this Post
-        form.pure-form.pure-form-aligned(method="post", action="/blog/addComment")
-          fieldset
-            input(type="hidden", name="_id", value=article._id.toHexString())
-            input(type="hidden", name="slug", value=article.slug)
-            div.pure-control-group
-              label(for="person") Author
-              input.medium-input(type="text", name="person", id="addCommentPerson", placeholder="Author")
-            div.pure-control-group
-              label(for="comment") Comment
-              textarea.medium-input(name="comment", rows=5, id="addCommentComment")
-            div.pure-controls
-              button.pure-button.pure-button-primary(type="submit") Comment
+        if article.allowComments
+          h3 Comment on this Post
+          form.pure-form.pure-form-aligned(method="post", action="/blog/addComment")
+            fieldset
+              input(type="hidden", name="_id", value=article._id.toHexString())
+              input(type="hidden", name="slug", value=article.slug)
+              div.pure-control-group
+                label(for="person") Author
+                input.medium-input(type="text", name="person", id="addCommentPerson", placeholder="Author")
+              div.pure-control-group
+                label(for="comment") Comment
+                textarea.medium-input(name="comment", rows=5, id="addCommentComment")
+              div.pure-controls
+                button.pure-button.pure-button-primary(type="submit") Comment
