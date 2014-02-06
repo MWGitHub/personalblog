@@ -31,13 +31,13 @@ implemented.
 
 ### Installation
 
-Install [node.js][] and [mongoDB][] onto the server.\
- Install the modules by running "npm install".\
- Create an admin (currently the only role for any user) user by running
-"node app.js --createuser yourusername yourpassword"\
- Edit the config-sample.js file to match your needs and save it as
-config.js in lib.\
- Start the server using "node app.js".
+Install [node.js][] and [mongoDB][] onto the server.  
+Install the modules by running "npm install".  
+Create an admin (currently the only role for any user) user by running
+"node app.js --createuser yourusername yourpassword"  
+Edit the config-sample.js file to match your needs and save it as
+config.js in lib.  
+Start the server using "node app.js".  
 
   [https://github.com/MWGitHub/personalblog]: https://github.com/MWGitHub/personalblog
   [node.js]: http://nodejs.org/
