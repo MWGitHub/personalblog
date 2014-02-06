@@ -7,3 +7,4 @@ public/wp-content
 public/images
 public/javascripts
 starter.sh
+/public/stylesheets/pure-min.css
