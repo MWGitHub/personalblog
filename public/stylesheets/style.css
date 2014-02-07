@@ -3,7 +3,7 @@ body {
   text-align: left;
   text-stroke: 1px rgba(255,255,255,0.1);
   color: #444;
-  background-color: #fafafa;
+  background-color: #fdfdfd;
   line-height: 1.5em;
 }
 h1,
@@ -18,34 +18,34 @@ h6 {
 }
 h1 {
   text-shadow: 1px 2px 2px #ddd;
-  font-size: 40px;
-  margin-bottom: 20px;
+  font-size: 2.1em;
+  margin-bottom: 0.5em;
 }
 h2 {
   text-shadow: 1px 2px 2px #ddd;
-  font-size: 22px;
-  margin-bottom: 16px;
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
 }
 h3 {
-  font-size: 20px;
+  font-size: 1.1em;
 }
 h4 {
-  font-size: 18px;
+  font-size: 1em;
 }
 h5 {
-  font-size: 16px;
+  font-size: 0.9em;
 }
 h6 {
-  font-size: 14px;
+  font-size: 0.8em;
 }
 h3,
 h4,
 h5,
 h6 {
-  margin-bottom: 6px;
+  margin-bottom: 0.2em;
 }
 p {
-  margin-bottom: 20px;
+  margin-bottom: 0.5em;
 }
 a:link {
   color: #0db9ff;
@@ -67,8 +67,8 @@ textarea {
 }
 /** Menu **/
 #site-title {
-  padding: 5px;
-  margin-bottom: 5px;
+  padding: 0.2em;
+  margin-bottom: 0.3em;
 }
 #site-title a:link,
 #site-title a:visited,
@@ -86,7 +86,7 @@ textarea {
 }
 .pure-menu .pure-menu-heading {
   border-bottom-color: #a9cb83;
-  padding: 5px;
+  padding: 0.3em;
 }
 .pure-menu li a:hover,
 .pure-menu li a:focus {
@@ -94,11 +94,10 @@ textarea {
 }
 #menu {
   float: left;
-  margin-right: 12px;
-  width: 250px;
+  margin-right: 0.5em;
+  width: 15em;
   line-height: 1.7em;
   background-color: #b4ea8b;
-  font-size: 18px;
 }
 #menu a:link,
 #menu a:visited,
@@ -111,26 +110,21 @@ textarea {
 #menu a:active {
   text-decoration: underline;
 }
-#menu ul ul {
-  margin-left: 10px;
-  font-size: 16px;
-  line-height: 1.5em;
-}
 /** Layout **/
 #content {
-  padding: 12px;
+  padding: 0.5em;
   overflow: hidden;
   width: auto;
 }
 #blog {
-  max-width: 850px;
+  max-width: 50em;
 }
 #blog img {
   width: 100%;
   height: auto;
 }
 .comment {
-  margin-bottom: 10px;
+  margin-bottom: 1em;
 }
 /** Forms **/
 .inline-form {
