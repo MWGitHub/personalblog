@@ -1,10 +1,14 @@
+* {
+  box-sizing: border-box;
+}
 body {
-  font: 18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+  font: 17px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
   text-align: left;
   text-stroke: 1px rgba(255,255,255,0.1);
   color: #444;
-  background-color: #fdfdfd;
+  background-color: #fff;
   line-height: 1.5em;
+  padding: 1em;
 }
 h1,
 h2,
@@ -85,19 +89,26 @@ textarea {
   background: inherit;
 }
 .pure-menu .pure-menu-heading {
+  border: 0;
   border-bottom-color: #a9cb83;
   padding: 0.3em;
+}
+.pure-menu li a {
+  padding: 0.1em 1.5em;
 }
 .pure-menu li a:hover,
 .pure-menu li a:focus {
   background: #aed990;
 }
 #menu {
+  padding: 0.5em;
   float: left;
   margin-right: 0.5em;
   width: 15em;
-  line-height: 1.7em;
   background-color: #b4ea8b;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 #menu a:link,
 #menu a:visited,
@@ -109,22 +120,6 @@ textarea {
 #menu a:hover,
 #menu a:active {
   text-decoration: underline;
-}
-/** Layout **/
-#content {
-  padding: 0.5em;
-  overflow: hidden;
-  width: auto;
-}
-#blog {
-  max-width: 50em;
-}
-#blog img {
-  width: 100%;
-  height: auto;
-}
-.comment {
-  margin-bottom: 1em;
 }
 /** Forms **/
 .inline-form {
@@ -154,13 +149,31 @@ textarea {
 .small-button {
   padding: 0.1em;
 }
-/** Others **/
 .destructive {
   background-color: #ed6767;
   color: #eee;
 }
+/** Content **/
+#content {
+  padding: 0.5em;
+  overflow: hidden;
+  width: auto;
+}
+#blog {
+  max-width: 50em;
+}
+#blog img {
+  width: 100%;
+  height: auto;
+}
+.comment {
+  margin-bottom: 1em;
+}
 /** Smaller Screens **/
 @media (max-width: 700px) {
+  body {
+    padding: 0;
+  }
   #menu {
     width: 100%;
     margin: 0;

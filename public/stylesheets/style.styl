@@ -1,11 +1,20 @@
+// General mixins
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+
 // HTML properties
+*
+  box-sizing border-box
 body
-  font: 18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif
+  font: 17px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif
   text-align left
   text-stroke 1px rgba(255, 255, 255, 0.1)
   color #444
-  background-color #FDFDFD
+  background-color #FFF
   line-height 1.5em
+  padding: 1em
 h1, h2, h3, h4, h5, h6
   margin 0 0 20px 0
   color #343434
@@ -56,34 +65,25 @@ textarea
   border 0
   background inherit
 .pure-menu .pure-menu-heading
+  border 0
   border-bottom-color #A9CB83
   padding 0.3em
+.pure-menu li a
+  padding 0.1em 1.5em
 .pure-menu li a:hover, .pure-menu li a:focus
   background #AED990
 #menu
+  padding 0.5em
   float left
   margin-right 0.5em
   width 15em
-  line-height 1.7em
   background-color #B4EA8B
   a:link, a:visited, a:hover, a:active
     text-decoration none
     color #444
   a:hover, a:active
     text-decoration underline
-
-/** Layout **/
-#content
-  padding 0.5em
-  overflow hidden
-  width auto
-#blog
-  max-width 50em
-  img
-    width 100%
-    height auto
-.comment
-  margin-bottom 1em
+  border-radius(5px)
 
 /** Forms **/
 .inline-form
@@ -105,14 +105,28 @@ textarea
   margin-left 6.4em
 .small-button
   padding 0.1em
-
-/** Others **/
 .destructive
   background-color #ED6767
   color #EEE
 
+/** Content **/
+#content
+  padding 0.5em
+  overflow hidden
+  width auto
+#blog
+  max-width 50em
+  img
+    width 100%
+    height auto
+.comment
+  margin-bottom 1em
+
+
 /** Smaller Screens **/
 @media (max-width: 700px)
+  body
+    padding 0
   #menu
     width 100%
     margin 0
