@@ -20,13 +20,19 @@ block content
         else
           input.long-input(type="text", name="title", id="editArticleTitle")
       div.pure-control-group
-        label(for="body") Body
-        textarea(name="body", rows=20, id="editArticleBody")
+        label(for="body")
+          | Body
+          br
+          button.pure-button.pure-button-primary.small-button(type="button" id="editorBodyButton") Editor
+        textarea(name="body", rows=20, cols=100, id="editArticleBody")
           if article
             !=article.body
       div.pure-control-group
-        label(for="excerpt") Excerpt
-        textarea(name="excerpt", rows=20, id="editArticleExcerpt")
+        label(for="excerpt")
+          | Excerpt
+          br
+          button.pure-button.pure-button-primary.small-button(type="button" id="editorExcerptButton") Editor
+        textarea(name="excerpt", rows=20, cols=100, id="editArticleExcerpt")
           if article
             !=article.excerpt
       div.pure-controls
@@ -51,8 +57,12 @@ block content
         button.pure-button.pure-button-primary(type="submit") Submit
   script.
     $(document).ready(function() {
-      $('textarea#editArticleBody').ckeditor().on('instanceReady.ckeditor', function(event, editor) {
-        editor.resize('100%', '800');
+      $('#editorBodyButton').click(function(event) {
+        $('textarea#editArticleBody').ckeditor().on('instanceReady.ckeditor', function(event, editor) {
+          editor.resize('100%', '800');
+        });
       });
-      $('textarea#editArticleExcerpt').ckeditor();
+      $('#editorExcerptButton').click(function(event) {
+        $('textarea#editArticleExcerpt').ckeditor();
+      });
     });
