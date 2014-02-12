@@ -19,6 +19,7 @@ h6 {
   margin: 0 0 20px 0;
   color: #343434;
   font-weight: bold;
+  line-height: 1em;
 }
 h1 {
   text-shadow: 1px 2px 2px #ddd;
@@ -194,6 +195,9 @@ textarea {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
+.article {
+  margin-bottom: 1.5em;
 }
 /** Smaller Screens **/
 @media (max-width: 700px) {
