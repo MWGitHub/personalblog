@@ -8,6 +8,7 @@ block content
         a(href='/blog/edit/' + article.slug) (edit)
     div.article
       div.body!= article.body
+    div.comments
       if article.showComments
         if article.comments.length > 0
           h3 Comments
