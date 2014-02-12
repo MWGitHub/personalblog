@@ -1,68 +1,78 @@
 extends layout
 
 block head
-  script(type='text/javascript', src='/javascripts/ckeditor/ckeditor.js')
-  script(type='text/javascript', src='/javascripts/ckeditor/adapters/jquery.js')
+  script(type='text/javascript', src='/javascripts/ace/ace.js')
 block content
-  h1= title
-  form.pure-form.pure-form-stacked(method="post")
-    fieldset
-      div.pure-control-group
-        label(for="articleSlug") Slug
+  div#blog
+    h1= title
+    form#new-post.pure-form.pure-form-stacked(method="post")
+      fieldset
         if article
-          input.long-input(type="text", name="articleSlug", id="editSlug", value=article.slug)
+          input(type="hidden", name="body", id="hiddenBody", value=article.body)
+          input(type="hidden", name="excerpt", id="hiddenExcerpt", value=article.excerpt)
         else
-          input.long-input(type="text", name="articleSlug", id="editSlug")
-      div.pure-control-group.long-input
-        label(for="title") Title
-        if article
-          input.long-input(type="text", name="title", id="editArticleTitle", value=article.title)
-        else
-          input.long-input(type="text", name="title", id="editArticleTitle")
-      div.pure-control-group
-        label(for="body")
-          | Body
-          br
-          button.pure-button.pure-button-primary.small-button(type="button" id="editorBodyButton") Editor
-        textarea(name="body", rows=20, cols=100, id="editArticleBody")
+          input(type="hidden", name="body", id="hiddenBody")
+          input(type="hidden", name="excerpt", id="hiddenExcerpt")
+        div.pure-control-group
+          label(for="articleSlug") Slug
           if article
-            !=article.body
-      div.pure-control-group
-        label(for="excerpt")
-          | Excerpt
-          br
-          button.pure-button.pure-button-primary.small-button(type="button" id="editorExcerptButton") Editor
-        textarea(name="excerpt", rows=20, cols=100, id="editArticleExcerpt")
-          if article
-            !=article.excerpt
-      div.pure-controls
-        label.pure-checkbox(for="published")
-          if article
-            input(type="checkbox", name="published", id="published", checked=article.isPublished)
+            input.long-input(type="text", name="articleSlug", id="editSlug", value=article.slug)
           else
-            input(type="checkbox", name="published")
-          = " Published"
-        label.pure-checkbox(for="allowComments")
+            input.long-input(type="text", name="articleSlug", id="editSlug")
+        div.pure-control-group.long-input
+          label(for="title") Title
           if article
-            input(type="checkbox", name="allowComments", id="allowComments", checked=article.allowComments)
+            input.long-input(type="text", name="title", id="editArticleTitle", value=article.title)
           else
-            input(type="checkbox", name="allowComments")
-          = " Allow Comments"
-        label.pure-checkbox(for="showComments")
-          if article
-            input(type="checkbox", name="showComments", id="showComments", checked=article.showComments)
-          else
-            input(type="checkbox", name="showComments")
-          = " Show Comments"
-        button.pure-button.pure-button-primary(type="submit") Submit
+            input.long-input(type="text", name="title", id="editArticleTitle")
+        div.pure-control-group
+          label(for="body") Body
+          div#articleBodyEditor.big-editor.editable(contenteditable=true)
+            if article
+              =article.body
+            else
+              | Enter text to edit.
+        div.pure-control-group
+          label(for="excerpt") Excerpt
+          div#articleExcerptEditor.small-editor.editable(contenteditable=true)
+            if article
+              =article.excerpt
+            else
+              | Enter text to edit.
+        div.pure-controls
+          label.pure-checkbox(for="published")
+            if article
+              input(type="checkbox", name="published", id="published", checked=article.isPublished)
+            else
+              input(type="checkbox", name="published")
+            = " Published"
+          label.pure-checkbox(for="allowComments")
+            if article
+              input(type="checkbox", name="allowComments", id="allowComments", checked=article.allowComments)
+            else
+              input(type="checkbox", name="allowComments")
+            = " Allow Comments"
+          label.pure-checkbox(for="showComments")
+            if article
+              input(type="checkbox", name="showComments", id="showComments", checked=article.showComments)
+            else
+              input(type="checkbox", name="showComments")
+            = " Show Comments"
+          button.pure-button.pure-button-primary(type="submit") Submit
   script.
     $(document).ready(function() {
-      $('#editorBodyButton').click(function(event) {
-        $('textarea#editArticleBody').ckeditor().on('instanceReady.ckeditor', function(event, editor) {
-          editor.resize('100%', '800');
-        });
-      });
-      $('#editorExcerptButton').click(function(event) {
-        $('textarea#editArticleExcerpt').ckeditor();
+      var editorBody = ace.edit("articleBodyEditor");
+      editorBody.setTheme("ace/theme/monokai");
+      editorBody.getSession().setMode("ace/mode/html");
+      editorBody.setShowPrintMargin(false);
+
+      var editorExcerpt = ace.edit("articleExcerptEditor");
+      editorExcerpt.setTheme("ace/theme/monokai");
+      editorExcerpt.getSession().setMode("ace/mode/html");
+      editorExcerpt.setShowPrintMargin(false);
+
+      $('#new-post').submit(function(event) {
+        document.getElementById('hiddenBody').value = editorBody.getValue();
+        document.getElementById('hiddenExcerpt').value = editorExcerpt.getValue();
       });
     });

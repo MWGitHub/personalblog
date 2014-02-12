@@ -153,6 +153,24 @@ textarea {
   background-color: #ed6767;
   color: #eee;
 }
+.big-editor {
+  width: 100%;
+  height: 800px;
+}
+.small-editor {
+  width: 50%;
+  height: 150px;
+}
+.space-right {
+  margin-right: 0.5em;
+}
+.editable {
+  overflow: auto;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #808080;
+}
 /** Content **/
 #content {
   padding: 0.5em;
