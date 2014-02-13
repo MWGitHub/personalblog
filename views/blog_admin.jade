@@ -8,10 +8,10 @@ block content
   #articles
     - each article in articles
       div.article
-          a(href="/blog/edit/"+article.slug) (edit)
+          a(href="/blog/edit/"+article._id.toHexString()) (edit)
           span -
           a(href="/blog/post/"+article.slug)= article.title
-          form.pure-form(method="post", action="/blog/delete/"+article._id)
+          form.pure-form(method="post", action="/blog/delete/"+article._id.toHexString())
             fieldset
               label(for="deleteConfirm")
                 input(type="checkbox", name="deleteConfirm")

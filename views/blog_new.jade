@@ -26,6 +26,12 @@ block content
           else
             input.long-input(type="text", name="title", id="editArticleTitle")
         div.pure-control-group
+          label(for="created") Created At
+          if article
+            input.long-input(type="datetime", name="created", id="created", value=article.created_at)
+          else
+            input.long-input(type="datetime", name="created", id="created")
+        div.pure-control-group
           label(for="body") Body
           div#articleBodyEditor.big-editor.editable(contenteditable=true)
             if article
@@ -44,20 +50,20 @@ block content
             if article
               input(type="checkbox", name="published", id="published", checked=article.isPublished)
             else
-              input(type="checkbox", name="published")
-            = " Published"
+              input(type="checkbox", name="published", id="published")
+            | Published
           label.pure-checkbox(for="allowComments")
             if article
               input(type="checkbox", name="allowComments", id="allowComments", checked=article.allowComments)
             else
-              input(type="checkbox", name="allowComments")
-            = " Allow Comments"
+              input(type="checkbox", name="allowComments", id="allowComments")
+            | Allow Comments
           label.pure-checkbox(for="showComments")
             if article
               input(type="checkbox", name="showComments", id="showComments", checked=article.showComments)
             else
-              input(type="checkbox", name="showComments")
-            = " Show Comments"
+              input(type="checkbox", name="showComments", id="showComments")
+            | Show Comments
           button.pure-button.pure-button-primary(type="submit") Submit
   script.
     $(document).ready(function() {
