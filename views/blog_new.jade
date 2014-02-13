@@ -1,7 +1,7 @@
 extends layout
 
 block head
-  script(type='text/javascript', src='/javascripts/ace/ace.js')
+  mixin ace
 block content
   div#blog
     h1= title
@@ -66,7 +66,7 @@ block content
             | Show Comments
           button.pure-button.pure-button-primary(type="submit") Submit
   script.
-    $(document).ready(function() {
+    window.onload = function() {
       var editorBody = ace.edit("articleBodyEditor");
       editorBody.setTheme("ace/theme/monokai");
       editorBody.getSession().setMode("ace/mode/html");
@@ -77,8 +77,9 @@ block content
       editorExcerpt.getSession().setMode("ace/mode/html");
       editorExcerpt.setShowPrintMargin(false);
 
-      $('#new-post').submit(function(event) {
+      document.getElementById('new-post').onsubmit = function() {
         document.getElementById('hiddenBody').value = editorBody.getValue();
         document.getElementById('hiddenExcerpt').value = editorExcerpt.getValue();
-      });
-    });
+      };
+
+    }

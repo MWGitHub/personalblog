@@ -1,3 +1,11 @@
+mixin jquery
+  script(type='text/javascript', src='http://code.jquery.com/jquery-2.1.0.min.js')
+  script.
+    window.jQuery || document.write('<script type="text/javascript" src="/javascripts/jquery-2.1.0.min.js"><\/script>')
+
+mixin ace
+  script(type='text/javascript', src='/javascripts/ace/ace.js')
+
 doctype html
 html
   head
@@ -7,10 +15,6 @@ html
       title Exploring Lines
     link(rel='stylesheet', href='/stylesheets/pure-min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-
-    script(type='text/javascript', src='http://code.jquery.com/jquery-2.1.0.min.js')
-    script.
-      window.jQuery || document.write('<script type="text/javascript" src="/javascripts/jquery-2.1.0.min.js"><\/script>')
     block head
   body
     div#menu
