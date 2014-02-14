@@ -19,6 +19,12 @@ block content
             input.long-input(type="text", name="articleSlug", id="editSlug", value=article.slug)
           else
             input.long-input(type="text", name="articleSlug", id="editSlug")
+        div.pure-control-group
+          label(for="template") Template
+          if article
+            input.long-input(type="text", name="template", id="template", value=article.template)
+          else
+            input.long-input(type="text", name="template", id="template")
         div.pure-control-group.long-input
           label(for="title") Title
           if article
