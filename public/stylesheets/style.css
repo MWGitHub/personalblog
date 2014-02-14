@@ -70,6 +70,10 @@ input {
 textarea {
   margin: 0.2em;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 /** Menu **/
 #site-title {
   padding: 0.2em;
@@ -180,10 +184,6 @@ textarea {
 }
 #blog {
   max-width: 50em;
-}
-#blog img {
-  width: 100%;
-  height: auto;
 }
 .comments {
   margin-top: 3em;
