@@ -64,7 +64,8 @@ block content
             else
               input(type="checkbox", name="showComments", id="showComments")
             | Show Comments
-          button.pure-button.pure-button-primary(type="submit") Submit
+          button#preview.pure-button.pure-button-primary.space-right(type="button") Preview
+          button#submit-button.pure-button.pure-button-primary(type="submit") Submit
   script.
     window.onload = function() {
       var editorBody = ace.edit("articleBodyEditor");
@@ -77,9 +78,26 @@ block content
       editorExcerpt.getSession().setMode("ace/mode/html");
       editorExcerpt.setShowPrintMargin(false);
 
-      document.getElementById('new-post').onsubmit = function() {
+      var form = document.getElementById('new-post');
+
+      function updateFields() {
         document.getElementById('hiddenBody').value = editorBody.getValue();
         document.getElementById('hiddenExcerpt').value = editorExcerpt.getValue();
+      }
+
+      form.onsubmit = function() {
+        updateFields();
       };
 
+      document.getElementById('submit-button').addEventListener('click', function(event) {
+        form.setAttribute('action', '');
+        form.setAttribute('target', '_self');
+      });
+
+      document.getElementById('preview').addEventListener('click', function(event) {
+        form.setAttribute('action', '/blog/preview');
+        form.setAttribute('target', '_blank');
+        updateFields();
+        form.submit();
+      });
     }

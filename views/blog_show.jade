@@ -3,7 +3,7 @@ extends layout
 block content
   #blog
     h1= title
-    if user
+    if user && article._id
       p
         a(href='/blog/edit/' + article._id.toHexString()) (edit)
     div.article
