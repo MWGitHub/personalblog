@@ -7,6 +7,6 @@ public/wp-content
 public/images
 public/javascripts
 starter.sh
-/public/stylesheets/pure-min.css
-/public/stylesheets/reset.css
-/publis/stylesheets/style.css
+public/stylesheets/pure-min.css
+public/stylesheets/reset.css
+public/stylesheets/style.css
