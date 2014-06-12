@@ -8,3 +8,5 @@ public/images
 public/javascripts
 starter.sh
 /public/stylesheets/pure-min.css
+/public/stylesheets/reset.css
+/publis/stylesheets/style.css
