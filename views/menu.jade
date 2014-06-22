@@ -2,17 +2,24 @@ mixin showItem(item)
   if item.link
     li
       a(href=item.link)= item.label
-  else
-    li.pure-menu-heading= item.label
+    
 
 h2#site-title
   a(href='/') Exploring Lines
-div.pure-menu.pure-menu-open
+div.menu-items
   if menuItems
-    - each item in menuItems
-      ul
+    - var isFirstLabel = true
+    each item in menuItems
+      if !item.link
+        if !isFirstLabel
+          != '</ul>'
+        - isFirstLabel = false
+        h3= item.label
+        != '<ul>'
+      else
         if item.isAdmin
           if user
             +showItem(item)
         else
           +showItem(item)
+    != '</ul>'

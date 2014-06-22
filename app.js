@@ -43,10 +43,12 @@ app.use(express.methodOverride());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(auth.userInfo);
-
-app.use(app.router);
+// Set the static directory.
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(app.router);
+
 
 // development only
 if ('development' == app.get('env')) {

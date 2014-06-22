@@ -10,24 +10,20 @@ border-radius(n)
 body
   font: 1em "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif
   text-align left
-  text-stroke 1px rgba(255, 255, 255, 0.1)
-  color #444
-  background-color #FFF
-  line-height 1.5em
-  padding: 0.4em
+  color #BBB
+  background-color #111
+  line-height 1.6em
 h1, h2, h3, h4, h5, h6
   margin 0 0 0.5em 0
-  color #343434
+  color #FEFEFE
   font-weight bold
   line-height 1em
 h2, h3, h4, h5, h6
   margin-top 1.0em
   margin-bottom 1.0em
 h1
-  text-shadow 1px 2px 2px #ddd
   font-size 2.1em
 h2
-  text-shadow 1px 2px 2px #ddd
   font-size 1.3em
 h3
   font-size 1.1em
@@ -38,15 +34,17 @@ h5
 h6
   font-size 0.8em
 p
-  margin: 0.8em 0
+  margin: 1em 0
+a
+  text-decoration none
 a:link
-  color #0DB9FF
+  color #5cb7ff
 a:visited
-  color #984FB0
+  color #c572de
 a:hover
-  color #5A9CC7
+  color #f2fcff
 a:active
-  color #42708F
+  color #f2fcff
 input
   margin 0.2em
 textarea
@@ -56,42 +54,33 @@ img
   height auto
 
 /** Menu **/
-#site-title
-  a:link, a:visited, a:hover, a:active
-    text-decoration none
-    color #444
-  a:hover
-    color #888
-  padding 0.2em
-  margin-bottom 0.3em
-  margin-top 0
-.pure-menu.pure-menu-open
-  border 0
-  background inherit
-.pure-menu .pure-menu-heading
-  border 0
-  border-bottom-color #A9CB83
-  padding 0.3em
-  font-size 0.9em
-  margin-top 0
-  line-height 1.2em
-.pure-menu li a
-  padding 0.1em 1.2em
-  line-height 1.2em
-.pure-menu li a:hover, .pure-menu li a:focus
-  background #AED990
 #menu
   padding 0.5em
   float left
   margin-right 0.5em
-  width 15em
-  background-color #B4EA8B
+  width 12em
+  background-color #111
   a:link, a:visited, a:hover, a:active
-    text-decoration none
-    color #444
-  a:hover, a:active
-    text-decoration underline
-  border-radius(0.3em)
+    color #bfff75
+  a:hover
+    color #FFF
+  border-radius(0)
+#site-title
+  font-size 1em
+  margin-bottom 1em
+  margin-top 0
+.menu-items
+  h3
+    margin 0
+    font-size 0.9em
+    font-weight bold
+    color: #BBB
+    margin-top 1em
+    margin-bottom 0.3em
+  ul
+    list-style none
+    padding 0
+    margin 0
 
 /** Forms **/
 .inline-form
