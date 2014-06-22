@@ -11,11 +11,19 @@ div.menu-items
     - var isFirstLabel = true
     each item in menuItems
       if !item.link
-        if !isFirstLabel
-          != '</ul>'
-        - isFirstLabel = false
-        h3= item.label
-        != '<ul>'
+        if item.isAdmin
+          if user
+            if !isFirstLabel
+              != '</ul>'
+            - isFirstLabel = false
+            h3= item.label
+            != '<ul>'
+        else 
+          if !isFirstLabel
+            != '</ul>'
+          - isFirstLabel = false
+          h3= item.label
+          != '<ul>'
       else
         if item.isAdmin
           if user
