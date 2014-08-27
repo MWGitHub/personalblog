@@ -1,33 +1,60 @@
+mixin showHeader(item)
+  div.menu-header
+    a(href='#' + item.label)
+      h3= item.label
+    if item.description
+      p= item.description
+  != '<div class="menu-list">'
+  != '<ul>'
+
 mixin showItem(item)
   if item.link
     li
       a(href=item.link)= item.label
+      if item.description
+        p= item.description
     
-
-h2#site-title
-  a(href='/') Exploring Lines
-div.menu-items
+div#site-title
+  h2
+    a(href='/') Exploring Lines
+div.menu-tabs
   if menuItems
-    - var isFirstLabel = true
+    //- Split the menu into sections with the first item being the header.
+    - var sections = []
+    - var index = 0
+    - var firstIndex = true
     each item in menuItems
-      if !item.link
-        if item.isAdmin
-          if user
-            if !isFirstLabel
-              != '</ul>'
-            - isFirstLabel = false
-            h3= item.label
-            != '<ul>'
-        else 
-          if !isFirstLabel
-            != '</ul>'
-          - isFirstLabel = false
-          h3= item.label
-          != '<ul>'
-      else
-        if item.isAdmin
-          if user
-            +showItem(item)
-        else
-          +showItem(item)
-    != '</ul>'
+      if !user && item.isAdmin
+        - continue
+      if !firstIndex && !item.link
+        - index++
+      - firstIndex = false
+
+      if !sections[index]
+        - sections[index] = []
+      - sections[index].push(item)
+    //- Create the menu labels.
+    each section in sections
+      if section[0]
+        div(class= 'menu-header' + ' col-' + sections.length)
+          a(href='#' id='tab-menu-' + section[0].label.toLowerCase() class='menu-tab')
+            div.menu-header-inner
+              h3= section[0].label
+              if section[0].description
+                p= section[0].description
+    div.clearfix
+//- Create the menu items.
+div#menu-sections
+  each section in sections
+    if section[0]
+      table(id= 'menu-' + section[0].label.toLowerCase() class='menu-section')
+        tr
+          th.menu-item-name Name
+          th.menu-item-description Description
+        each item in section
+          if item.link
+            tr
+             td.menu-item-name
+               a(href=item.link)=item.label
+             td.menu-item-description
+               span=item.description

@@ -4,14 +4,43 @@ border-radius(n)
   -moz-border-radius n
   border-radius n
 
+opacity(n)
+  // IE
+  -ms-filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=" + n*100 + ")")
+  // IE 5-7
+  filter: unquote('alpha(opacity=' + n * 100 + ')')
+  // Netscape
+  -moz-opacity: n
+  // Safari 1.x
+  -khtml-opacity: n
+  // General Browsers
+  opacity n
+
+transition(args...)
+  -webkit-transition: args
+  -moz-transition: args
+  -ms-transition: args
+  -o-transition: args
+  transition: args
+
+// Colors
+Colors = {
+  green: #bfff75,
+  blue: #19AFFF,
+  purple: #c572de,
+  light: #f2fcff,
+  lightgray: #DDD,
+  dark: #111
+}
+
 // HTML properties
 *
   box-sizing border-box
 body
   font: 1em "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif
   text-align left
-  color #DDD
-  background-color #111
+  color: Colors.lightgray
+  background-color: Colors.dark
   line-height 1.6em
 h1, h2, h3, h4, h5, h6
   margin 0 0 0.5em 0
@@ -38,13 +67,13 @@ p
 a
   text-decoration none
 a:link
-  color #5cb7ff
+  color: Colors.blue
 a:visited
-  color #c572de
+  color: Colors.purple
 a:hover
-  color #f2fcff
+  color: Colors.light
 a:active
-  color #f2fcff
+  color: Colors.light
 input
   margin 0.2em
 textarea
@@ -52,35 +81,93 @@ textarea
 img
   max-width 100%
   height auto
+table
+  display table
+td, th
+  border 1px solid #444
+  padding 0.5em
+
+/** General **/
+.clearfix
+  clear both
+columns(x)
+  width (100 / x)%
+for num in (1...10)
+  .col-{num}
+    columns(num)
 
 /** Menu **/
+menu-buffer = 0.25em
 #menu
-  padding 0.5em
-  float left
   margin-right 0.5em
-  width 12em
-  background-color #111
+  width 100%
   a:link, a:visited, a:hover, a:active
-    color #bfff75
+    color: Colors.green
   a:hover
-    color #FFF
+    color: Colors.light
   border-radius(0)
 #site-title
-  font-size 1em
-  margin-bottom 1em
-  margin-top 0
-.menu-items
+  margin 0
+  padding menu-buffer
+  background-color #222
+  h2
+    font-size 1em
+    margin 0
+.menu-header
+  float left
+  h3
+    color: Colors.blue
+  a:link, a:visited, a:hover, a:active
+    p
+      color: Colors.light
+  a:hover
+    div
+      background-color #555
+      transition(all 0.5s ease)
+.menu-header-inner[state='on']
+  background-color #555
+  transition(all 0.5s ease)
+.menu-header-inner[state='off']
+  background-color #333
+  transition(all 0.5s ease)
+.menu-header-inner
+  width auto
+  background-color #333
+  padding menu-buffer
+  margin 0.1em
+.menu-tabs
+  text-align center
   h3
     margin 0
-    font-size 0.9em
+    font-size 1em
     font-weight bold
-    color: #BBB
-    margin-top 1em
-    margin-bottom 0.3em
+    margin-top 0
+    margin-bottom menu-buffer
   ul
     list-style none
     padding 0
     margin 0
+  p
+    margin 0
+    font-size 0.8em
+#menu-sections
+  width 100%
+  padding 0.1em
+.menu-section
+  width 100%
+  background-color #333
+.menu-item-name
+  width 30%
+.menu-item-description
+  width 70%
+.menu-section[state='off']
+  opacity(0)
+  position absolute
+  left -10000px
+.menu-section[state='on']
+  opacity(1)
+  transition(all 0.5s ease)
+  position relative
 
 /** Forms **/
 .inline-form
@@ -123,6 +210,7 @@ img
   width auto
 #blog
   width 100%
+  margin 0 auto
 .limited-width
   max-width 50em
 .comments

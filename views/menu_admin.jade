@@ -8,6 +8,7 @@ block content
         input(type='hidden', name='id', value=item._id.toHexString())
         input(type='text', name='label', placeholder='label', value=item.label)
         input(type='text', name='link', placeholder='link', value=item.link)
+        input(type='text', name='description', placeholder='description', value=item.description)
         input(type='text', name='order', placeholder='order', value=item.order)
         label(for='isAdmin') Admin Only
         input(type='checkbox', name='isAdmin', id='isAdmin', checked=item.isAdmin)
@@ -24,6 +25,7 @@ block content
       legend Add new item
       input(type='text', name='label', placeholder='label')
       input(type='text', name='link', placeholder='link')
+      input(type='text', name='description', placeholder='description')
       input(type='text', name='order', placeholder='order')
       label(for='isAdmin') Admin Only
       input(type='checkbox', name='isAdmin', id='isAdmin')
