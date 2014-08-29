@@ -34,14 +34,15 @@ div.menu-tabs
         - sections[index] = []
       - sections[index].push(item)
     //- Create the menu labels.
-    each section in sections
+    each section, index in sections
       if section[0]
-        div(class= 'menu-header' + ' col-' + sections.length)
+        div(class= 'menu-header' + ' col-margin-' + sections.length +
+          (index === 0 ? ' first' : '') +
+          (index === sections.length - 1 ? ' last' : ''))
           a(href='#' id='tab-menu-' + section[0].label.toLowerCase() class='menu-tab')
-            div.menu-header-inner
-              h3= section[0].label
-              if section[0].description
-                p= section[0].description
+            h3= section[0].label
+            if section[0].description
+              p= section[0].description
     div.clearfix
 //- Create the menu items.
 div#menu-sections

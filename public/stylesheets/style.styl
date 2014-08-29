@@ -113,30 +113,11 @@ menu-buffer = 0.25em
   h2
     font-size 1em
     margin 0
-.menu-header
-  float left
-  h3
-    color: Colors.blue
-  a:link, a:visited, a:hover, a:active
-    p
-      color: Colors.light
-  a:hover
-    div
-      background-color #555
-      transition(all 0.5s ease)
-.menu-header-inner[state='on']
-  background-color #555
-  transition(all 0.5s ease)
-.menu-header-inner[state='off']
-  background-color #333
-  transition(all 0.5s ease)
-.menu-header-inner
-  width auto
-  background-color #333
-  padding menu-buffer
-  margin 0.1em
 .menu-tabs
   text-align center
+  display table
+  border-spacing menu-buffer
+  width 100%
   h3
     margin 0
     font-size 1em
@@ -150,9 +131,29 @@ menu-buffer = 0.25em
   p
     margin 0
     font-size 0.8em
+.menu-header
+  float none
+  display table-cell
+  background-color #333
+  padding menu-buffer
+  h3
+    color: Colors.blue
+  a:link, a:visited, a:hover, a:active
+    p
+      color: Colors.light
+  a:hover
+    div
+      background-color #555
+      transition(all 0.5s ease)
+.menu-header[state='off']
+  background-color #333
+  transition(all 0.5s ease)
+.menu-header[state='on'], .menu-header:hover
+  background-color #555
+  transition(all 0.5s ease)
 #menu-sections
   width 100%
-  padding 0.1em
+  padding menu-buffer
 .menu-section
   width 100%
   background-color #333
