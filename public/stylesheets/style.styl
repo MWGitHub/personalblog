@@ -120,31 +120,20 @@ menu-buffer = 0.25em
   width 100%
   h3
     margin 0
-    font-size 1em
+    font-size 1.2em
     font-weight bold
     margin-top 0
     margin-bottom menu-buffer
-  ul
-    list-style none
-    padding 0
-    margin 0
+    color: Colors.blue
   p
     margin 0
-    font-size 0.8em
+    font-size 1.0em
 .menu-header
   float none
   display table-cell
   background-color #333
   padding menu-buffer
-  h3
-    color: Colors.blue
-  a:link, a:visited, a:hover, a:active
-    p
-      color: Colors.light
-  a:hover
-    div
-      background-color #555
-      transition(all 0.5s ease)
+  cursor pointer
 .menu-header[state='off']
   background-color #333
   transition(all 0.5s ease)
