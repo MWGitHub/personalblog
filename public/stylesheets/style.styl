@@ -116,13 +116,12 @@ menu-buffer = 0.25em
 .menu-tabs
   text-align center
   display table
-  border-spacing menu-buffer
+  border-spacing 0
   width 100%
   h3
     margin 0
     font-size 1.2em
     font-weight bold
-    margin-top 0
     margin-bottom menu-buffer
     color: Colors.blue
   p
@@ -137,15 +136,18 @@ menu-buffer = 0.25em
 .menu-header[state='off']
   background-color #333
   transition(all 0.5s ease)
-.menu-header[state='on'], .menu-header:hover
+.menu-header[state='on']
   background-color #555
+  transition(all 0.5s ease)
+.menu-header:hover
+  background-color #444
   transition(all 0.5s ease)
 #menu-sections
   width 100%
-  padding menu-buffer
+  padding 0
 .menu-section
   width 100%
-  background-color #333
+  background-color #555
 .menu-item-name
   width 30%
 .menu-item-description
