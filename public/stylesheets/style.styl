@@ -27,10 +27,11 @@ transition(args...)
 Colors = {
   green: #bfff75,
   blue: #19AFFF,
+  lightblue: #75CFFF,
   purple: #c572de,
   light: #f2fcff,
   lightgray: #DDD,
-  dark: #111
+  dark: #333
 }
 
 // HTML properties
@@ -100,11 +101,8 @@ for num in (1...10)
 menu-buffer = 0.25em
 #menu
   margin-right 0.5em
+  margin-bottom 1em
   width 100%
-  a:link, a:visited, a:hover, a:active
-    color: Colors.green
-  a:hover
-    color: Colors.light
   border-radius(0)
 #site-title
   margin 0
@@ -113,6 +111,10 @@ menu-buffer = 0.25em
   h2
     font-size 1em
     margin 0
+  a:link, a:visited, a:hover, a:active
+    color: Colors.green
+  a:hover
+    color: Colors.light
 .menu-tabs
   text-align center
   display table
@@ -130,28 +132,39 @@ menu-buffer = 0.25em
 .menu-header
   float none
   display table-cell
-  background-color #333
+  background-color #444
   padding menu-buffer
   cursor pointer
 .menu-header[state='off']
-  background-color #333
+  background-color #444
   transition(all 0.5s ease)
 .menu-header[state='on']
-  background-color #555
+  background-color #666
   transition(all 0.5s ease)
 .menu-header:hover
-  background-color #444
+  background-color #555
   transition(all 0.5s ease)
 #menu-sections
   width 100%
   padding 0
+  font-weight bold
+  a:link, a:visited, a:hover, a:active
+    color: Colors.lightblue
+  a:hover
+    color: Colors.light
 .menu-section
   width 100%
-  background-color #555
+  background-color #666
+  td, th
+    border 1px solid #333
+    border-left 0
 .menu-item-name
   width 30%
 .menu-item-description
   width 70%
+  font-weight normal
+th.menu-item-description
+  font-weight bold
 .menu-section[state='off']
   opacity(0)
   position absolute
