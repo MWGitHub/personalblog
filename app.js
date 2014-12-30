@@ -14,6 +14,13 @@ var auth = require('./lib/auth/app');
 var admin = require('./lib/admin/app');
 var menu = require('./lib/menu/app');
 var index = require('./lib/index');
+var favicon = require('serve-favicon');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
+var methodOverride = require('method-override');
+var errorHandler = require('errorhandler');
 
 /**
  * Starts the server.
@@ -26,19 +33,22 @@ function startServer() {
 
 // Setup the node application.
 var app = express();
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 // Passport setup.
 auth.passportSetup(passport);
 // all environments
 app.set('port', process.env.PORT || 4000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use(express.favicon(path.join(__dirname, 'public/images/favicon.ico')));
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.cookieParser(config.secret));
-app.use(express.cookieSession({cookie: {maxAge: 60 * 60 * 1000}}));
-app.use(express.methodOverride());
+app.use(morgan('combined'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser(config.secret));
+app.use(cookieSession({
+    keys: ['PugmainPug'],
+    cookie: {maxAge: 60 * 60 * 1000}}
+));
+app.use(methodOverride());
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -47,12 +57,9 @@ app.use(auth.userInfo);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(app.router);
-
-
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+  app.use(errorHandler());
 }
 
 app.enable('trust proxy');
