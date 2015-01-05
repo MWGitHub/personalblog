@@ -9,7 +9,9 @@ public/javascripts
 starter.sh
 public/stylesheets/pure-min.css
 public/stylesheets/reset.css
+public/stylesheets/normalize.css
 public/stylesheets/style.css
 /public/stylesheets/style-dark.styl
 /public/stylesheets/style-light.styl
 dump
+winstart.cmd

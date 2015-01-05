@@ -1,6 +1,25 @@
 // Variables
 // Colors
+
 Colors = {
+  background: #FFF,
+  shadow: #000,
+  primary: #FFF,
+  accent: #bfff75,
+  accent-hover: #daffa7,
+  background-shade: #FFF,
+  background-invert: #000,
+  text: #000,
+  text-weak: #FEFEFE,
+  text-strong: #000,
+  text-heading: #000,
+  text-invert: #FFF,
+  text-strong-invert: #FFF,
+  text-link: #19AFFF,
+  text-link-visited: #c572de,
+  text-link-hover: #75CFFF,
+  border: #CCC
+
   green: #bfff75,
   blue: #19AFFF,
   lightblue: #75CFFF,
@@ -35,6 +54,13 @@ transition(args...)
   -o-transition: args
   transition: args
 
+unselectable()
+  -webkit-user-select none /* Chrome/Safari */
+  -moz-user-select none /* Firefox */
+  -ms-user-select none /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select none
+  user-select none
 
 // HTML properties
 *
@@ -42,14 +68,14 @@ transition(args...)
 body
   font: 1em "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif
   text-align left
-  color: Colors.lightgray
-  background-color: Colors.dark
-  line-height 1.6em
+  color: Colors.text
+  background-color: Colors.background
+  line-height 1.6
 h1, h2, h3, h4, h5, h6
   margin 0 0 0.5em 0
-  color #FEFEFE
+  color: Colors.text
   font-weight bold
-  line-height 1em
+  line-height 1
 h2, h3, h4, h5, h6
   margin-top 1.0em
   margin-bottom 1.0em
@@ -70,13 +96,13 @@ p
 a
   text-decoration none
 a:link
-  color: Colors.blue
+  color: Colors.text-link
 a:visited
-  color: Colors.purple
+  color: Colors.text-link-visited
 a:hover
-  color: Colors.light
+  color: Colors.text-link-hover
 a:active
-  color: Colors.light
+  color: Colors.text-link-hover
 input
   margin 0.2em
 textarea
@@ -88,7 +114,7 @@ table
   display table
 td, th
   border 1px solid #444
-  padding 0.5em
+  padding 0.25em
 
 /** General **/
 .clearfix
@@ -103,70 +129,74 @@ for num in (1...10)
 menu-buffer = 0.25em
 #menu
   margin-right 0.5em
-  margin-bottom 1em
+  margin-bottom 0
   width 100%
   border-radius(0)
 #site-title
   margin 0
   padding menu-buffer
-  background-color #222
+  background-color: Colors.background-invert
   h2
     font-size 1em
     margin 0
   a:link, a:visited, a:hover, a:active
-    color: Colors.green
+    color: Colors.accent
   a:hover
-    color: Colors.light
+    color: Colors.text-link-hover
 .menu-tabs
   text-align center
   display table
   border-spacing 0
   width 100%
+  border-bottom: 1px solid Colors.border
+  box-shadow: 0 0.1em 0.5em rgba(0,0,0,0.05)
   h3
     margin 0
-    font-size 1.2em
+    font-size 1.1em
     font-weight bold
-    margin-bottom menu-buffer
     color: Colors.blue
   p
     margin 0
-    font-size 1.0em
+    font-size 0.9em
 .menu-header
   float none
   display table-cell
-  background-color #444
+  background-color: Colors.background
   padding menu-buffer
   cursor pointer
+  unselectable()
 .menu-header[state='off']
-  background-color #444
+  background-color: Colors.background
   transition(all 0.5s ease)
 .menu-header[state='on']
-  background-color #666
+  background-color: Colors.accent
   transition(all 0.5s ease)
 .menu-header:hover
-  background-color #555
+  background-color: Colors.accent-hover
   transition(all 0.5s ease)
 #menu-sections
   width 100%
   padding 0
-  font-weight bold
   a:link, a:visited, a:hover, a:active
-    color: Colors.lightblue
+    color: Colors.text-link
   a:hover
-    color: Colors.light
+    color: Colors.text-link-hover
 .menu-section
   width 100%
-  background-color #666
+  background-color: Colors.background
+  box-shadow: 0 0.1em 0.5em rgba(0,0,0,0.05)
   td, th
-    border 1px solid #333
-    border-left 0
-.menu-item-name
-  width 30%
-.menu-item-description
-  width 70%
-  font-weight normal
-th.menu-item-description
-  font-weight bold
+    border none
+  .menu-item-name
+    width 30%
+    border-right: 1px solid Colors.border
+    border-bottom: 1px solid Colors.border
+  .menu-item-description
+    width 70%
+    font-weight normal
+    border-bottom: 1px solid Colors.border
+  tr th.menu-item-description, tr th.menu-item-name
+    font-weight bold
 .menu-section[state='off']
   opacity(0)
   position absolute
