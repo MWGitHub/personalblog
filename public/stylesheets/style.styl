@@ -2,23 +2,28 @@
 // Colors
 
 Colors = {
+  title-background: #333,
+  title-hover: #CCC,
+
   background: #FFF,
   shadow: #000,
   primary: #FFF,
-  accent: #bfff75,
-  accent-hover: #daffa7,
-  background-shade: #FFF,
-  background-invert: #000,
+  accent: #333,
+  accent-hover: #555,
+  background-shade: #606060,
+  background-invert: #333,
   text: #000,
   text-weak: #FEFEFE,
   text-strong: #000,
   text-heading: #000,
   text-invert: #FFF,
+  text-invert-hover: #CCC,
   text-strong-invert: #FFF,
   text-link: #19AFFF,
   text-link-visited: #c572de,
   text-link-hover: #75CFFF,
-  border: #CCC
+  border: #CCC,
+  border-invert: #888,
 
   green: #bfff75,
   blue: #19AFFF,
@@ -124,6 +129,13 @@ columns(x)
 for num in (1...10)
   .col-{num}
     columns(num)
+.clickable
+  cursor pointer
+  transition all 0.5s ease
+.clickable:hover
+  background-color: Colors.accent
+  color: Colors.text-invert
+
 
 /** Menu **/
 menu-buffer = 0.25em
@@ -135,14 +147,14 @@ menu-buffer = 0.25em
 #site-title
   margin 0
   padding menu-buffer
-  background-color: Colors.background-invert
+  background-color: Colors.title-background
   h2
     font-size 1em
     margin 0
   a:link, a:visited, a:hover, a:active
-    color: Colors.accent
+    color: Colors.text-invert
   a:hover
-    color: Colors.text-link-hover
+    color: Colors.text-invert-hover
 .menu-tabs
   text-align center
   display table
@@ -171,17 +183,19 @@ menu-buffer = 0.25em
 .menu-header[state='on']
   background-color: Colors.accent
   transition(all 0.5s ease)
+  color: Colors.text-invert
 .menu-header:hover
   background-color: Colors.accent-hover
   transition(all 0.5s ease)
+  color: Colors.text-invert
 #menu-sections
   width 100%
   padding 0
-  a:link, a:visited, a:hover, a:active
-    color: Colors.text-link
+  a:link, a:visited, a:active
+    color: Colors.text
   a:hover
     color: Colors.text-link-hover
-.menu-section
+#menu-sections .menu-section
   width 100%
   background-color: Colors.background
   box-shadow: 0 0.1em 0.5em rgba(0,0,0,0.05)
@@ -191,12 +205,22 @@ menu-buffer = 0.25em
     width 30%
     border-right: 1px solid Colors.border
     border-bottom: 1px solid Colors.border
+    color: Colors.text-invert
   .menu-item-description
     width 70%
     font-weight normal
     border-bottom: 1px solid Colors.border
+    color: Colors.text
   tr th.menu-item-description, tr th.menu-item-name
+    color: Colors.text
     font-weight bold
+  tr.clickable:hover
+    background-color: Colors.accent-hover
+    color: Colors.text-invert
+  tr.clickable:hover .menu-item-description
+    color: Colors.text-invert
+  tr.clickable:hover a
+    color: Colors.text-invert
 .menu-section[state='off']
   opacity(0)
   position absolute

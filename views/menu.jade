@@ -49,12 +49,9 @@ div#menu-sections
   each section in sections
     if section[0]
       table(id= 'menu-' + section[0].label.toLowerCase() class='menu-section')
-        tr
-          th.menu-item-name Page
-          th.menu-item-description Description
         each item in section
           if item.link
-            tr
+            tr(class='clickable', data-href=item.link)
              td.menu-item-name
                a(href=item.link)=item.label
              td.menu-item-description
