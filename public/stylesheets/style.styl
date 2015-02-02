@@ -199,36 +199,34 @@ menu-buffer = 0.25em
   width 100%
   background-color: Colors.background
   box-shadow: 0 0.1em 0.5em rgba(0,0,0,0.05)
-  td, th
-    border none
+  overflow hidden
+  transition(all 0.1s ease)
   .menu-item-name
     width 30%
     border-right: 1px solid Colors.border
     border-bottom: 1px solid Colors.border
     color: Colors.text-invert
+    float left
   .menu-item-description
     width 70%
     font-weight normal
     border-bottom: 1px solid Colors.border
     color: Colors.text
-  tr th.menu-item-description, tr th.menu-item-name
+    float left
+  .menu-item-description, .menu-item-name
     color: Colors.text
-    font-weight bold
-  tr.clickable:hover
+    padding 0.25em
+  .clickable:hover
     background-color: Colors.accent-hover
     color: Colors.text-invert
-  tr.clickable:hover .menu-item-description
+  .clickable:hover .menu-item-description
     color: Colors.text-invert
-  tr.clickable:hover a
+  .clickable:hover a
     color: Colors.text-invert
 .menu-section[state='off']
   opacity(0)
-  position absolute
-  left -10000px
 .menu-section[state='on']
   opacity(1)
-  transition(all 0.5s ease)
-  position relative
 
 /** Forms **/
 .inline-form

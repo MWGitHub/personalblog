@@ -48,11 +48,12 @@ div.menu-tabs
 div#menu-sections
   each section in sections
     if section[0]
-      table(id= 'menu-' + section[0].label.toLowerCase() class='menu-section')
+      div(id= 'menu-' + section[0].label.toLowerCase() class='menu-section')
         each item in section
           if item.link
-            tr(class='clickable', data-href=item.link)
-             td.menu-item-name
+            div(class='clickable', data-href=item.link)
+             div.menu-item-name
                a(href=item.link)=item.label
-             td.menu-item-description
+             div.menu-item-description
                span=item.description
+             div.clearfix
