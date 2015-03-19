@@ -1,7 +1,7 @@
 personalblog
 ============
 
-This site is a simple blog that uses node.js and mongoDB. It uses
+This is a simple blog that uses node.js and mongoDB. It uses
 express as the framework, jade for templates, and stylus for css.
 
 In order to keep the site simple only essential features will be
